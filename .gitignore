@@ -1,0 +1,12 @@
+# 中间素材 / 内部信息 —— 绝不进公开仓库
+TODO-待补真实素材.md
+openclaw-nas-report.md
+*.secret
+*.key
+*.pem
+
+# 系统 / 编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
