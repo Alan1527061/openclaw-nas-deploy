@@ -44,6 +44,18 @@ flowchart LR
 
 **部署要点一句话**：OpenClaw 容器用 **host 网络**跑在 18789 网关端口，**主动向飞书建立 websocket 长连接**（所以飞书功能不需要在 NAS 开任何入站端口）；网页控制台由群晖自带 nginx 反代暴露到 18888。
 
+## 效果演示
+
+在飞书里和它对话（小龙虾 🦀）：
+
+![飞书对话截图 1](assets/screenshots/feishu-chat-1.png)
+
+![飞书对话截图 2](assets/screenshots/feishu-chat-2.png)
+
+网页控制台（Control UI）：
+
+![Control UI 截图](assets/screenshots/control-ui.png)
+
 ## 运行环境
 
 | 项 | 说明 |

@@ -10,7 +10,7 @@
 - **现象**：在外网（或换了新端口/IP）访问网页控制台，页面打不开，浏览器提示 origin 不被允许。
 - **排查**：先查是不是网络/反代问题——内网 IP 直连正常，但用域名或改端口后就报错；对比发现是**访问来源地址变了**。
 - **原因**：OpenClaw 的 `controlUi.allowedOrigins` 是**逐字比较**「协议 + host + 端口」的白名单。新增一个访问入口（域名、IP、端口任一变化），只要不在白名单里，浏览器就会被拒。我一开始只配了内网 IP，后来加 dynv6 域名走 IPv6 反代就触发了这个报错。
-- **解决**：把实际会用到的每个访问入口（公网域名 `https://alan152.dynv6.net:18888`、内网 `http://192.168.0.119:18888` 等）都**逐字**加进 `openclaw.json → gateway.controlUi.allowedOrigins`，然后 `docker restart openclaw`。
+- **解决**：把实际会用到的每个访问入口（公网域名 `https://<你的域名>:18888`、内网 `http://<内网IP>:18888` 等）都**逐字**加进 `openclaw.json → gateway.controlUi.allowedOrigins`，然后 `docker restart openclaw`。
 - **教训**：OpenClaw 的安全校验是「来源白名单 + token」双层，白名单做的是字面精确匹配——以后任何入口变化，第一反应先查这里。
 
 ## 坑 2：宿主机上改不动 OpenClaw 的配置文件
